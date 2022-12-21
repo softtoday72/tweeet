@@ -1,0 +1,17 @@
+<div class="container px-3" style="height:100vh" data-user-id="{{logInUser.id}}" id="left-nav">
+  <img class="logo mb-3" alt="logo"
+    src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter_colored_svg-512.png"
+    style="height:50px;width:50px;">
+  <nav class="nav flex-column">
+    <a class="nav-link fs-5 fw-bold blockstyle my-1 px-1 mb-3 rounded-pill" href="/tweets"
+      style="color:{{#ifCond route 'index'}}#00adff{{else}}black{{/ifCond}};">
+      <i class="fas fa-house-user"></i><span class="remindIcon">&bull;</span>Home
+    </a>
+
+    <a class="nav-link fs-5 fw-bold blockstyle my-1 px-1 mb-3 rounded-pill" href="/users/{{logInUser.id}}/tweets"
+      style="color:{{#ifCond route 'tweets'}}#00adff{{else}}black{{/ifCond}};">
+      <i class="fas fa-user-alt"></i><span class="remindIcon">&bull;</span>Profile
+    </a>
+
+  </nav>
+</div>
