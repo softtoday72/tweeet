@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col" > {{> left-nav route='index'}} left</div>
+  <div class="col" > {{> left-nav route='index'}} </div>
 
   <div class="col-7 border-start border-end px-0" id="middle" style="overflow:auto;">
     <H3 class="my-1 px-4 py-0 mx-0 fw-bold">Home</H3>
@@ -19,12 +19,14 @@
     </form>
     <hr class="my-0 " style="border: 8px solid rgb(106, 106, 106);" />
     <div id="tweetsContainer">
-      更新的推文在這
+      <div style="display: none;" id="idArray">{{ids}}</div>
       {{#each tweets}}
         {{> tweet-block tweet=this logInUser=../logInUser}}
       {{/each}}
     </div>
   </div>
 
-  <div class="col" >  {{> right-nav}} right</div>
+  <div class="col-3">  {{> right-nav}} right</div>
 </div>
+<script src="/javascripts/scroll.js"></script>
+<script src="/javascripts/ajax.js"></script>

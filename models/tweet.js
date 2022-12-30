@@ -1,10 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Tweet extends Model {
-    
     static associate(models) {
       Tweet.hasMany(models.Reply, { foreignKey: 'TweetId' })
       Tweet.hasMany(models.Like, { foreignKey: 'TweetId' })
@@ -13,12 +10,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tweet.init({
     UserId: DataTypes.INTEGER,
-    description: DataTypes.STRING
+    description: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Tweet',
-    tableName: 'Tweets',
-    underscored: true,
-  });
-  return Tweet;
-};
+    tableName: 'Tweets'
+  })
+  return Tweet
+}

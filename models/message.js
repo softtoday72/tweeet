@@ -1,25 +1,23 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
 module.exports = (sequelize, DataTypes) => {
-  class Message extends Model {
-    
-    static associate(models) {
-      Message.belongsTo(models.User, { foreignKey: 'senderId', as: 'sender' })
-      Message.belongsTo(models.User, { foreignKey: 'receiverId', as: 'receiver' })
-    }
-  }
-  Message.init({
+  const Message = sequelize.define('Message', {
     content: DataTypes.STRING,
     senderId: DataTypes.INTEGER,
     receiverId: DataTypes.INTEGER,
-    beenSeen: DataTypes.INTEGER
+    beenSeen: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   }, {
-    sequelize,
+
     modelName: 'Message',
     tableName: 'Messages',
-    underscored: true,
-  });
-  return Message;
-};
+    sequelize
+  })
+  Message.associate = function (models) {
+    // associations can be defined here
+    Message.belongsTo(models.User, { foreignKey: 'senderId', as: 'sender' })
+    Message.belongsTo(models.User, { foreignKey: 'receiverId', as: 'receiver' })
+  }
+  return Message
+}
